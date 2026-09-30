@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+
+  --color-fundo: #f7f6f3;
+  --color-cartao: #ffffff;
+  --color-borda: #e7e4dd;
+  --color-texto: #1f2a2e;
+  --color-suave: #66716f;
+
+  --color-marca: #0f766e;
+  --color-marca-escura: #115e59;
+  --color-marca-clara: #e6f4f1;
+
+  --color-faixa-muito-baixa: #991b1b;
+  --color-faixa-baixa: #dc2626;
+  --color-faixa-alvo: #15803d;
+  --color-faixa-alta: #b45309;
+  --color-faixa-muito-alta: #c2410c;
+
+  --color-insulina: #6d28d9;
+  --color-refeicao: #0369a1;
+  --color-exercicio: #0f766e;
+  --color-nota: #66716f;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: var(--color-fundo);
+  color: var(--color-texto);
+  font-family: var(--font-sans);
+}
+
+/* Remove as setinhas dos campos numéricos: atrapalham no celular */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@layer components {
+  .cartao {
+    @apply rounded-2xl border border-borda bg-cartao p-4 sm:p-5;
+  }
+  .campo {
+    @apply w-full rounded-xl border border-borda bg-white px-3 py-2.5 text-base outline-none transition focus:border-marca focus:ring-2 focus:ring-marca/20;
+  }
+  .rotulo {
+    @apply mb-1.5 block text-sm font-semibold text-suave;
+  }
+  .botao {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-marca px-4 py-3 font-bold text-white transition hover:bg-marca-escura disabled:opacity-50;
+  }
+  .botao-secundario {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-borda bg-white px-4 py-3 font-bold text-texto transition hover:bg-fundo disabled:opacity-50;
+  }
+  .chip {
+    @apply rounded-full border border-borda bg-white px-3.5 py-2 text-sm font-semibold transition;
+  }
+  .chip-ativo {
+    @apply border-marca bg-marca-clara text-marca-escura;
+  }
+}
